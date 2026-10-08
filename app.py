@@ -62,7 +62,7 @@ def get_gemini_client(custom_key=None):
         return None
 
 # Default dossier loader from project directory
-PARENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PARENT_DIR = os.path.dirname(os.path.abspath(__file__))
 DOSSIER_FILES = [
     "FIR_042_2023.txt.txt",
     "Complainant_Statement.txt.txt",
@@ -344,4 +344,4 @@ def static_files(filename):
 
 if __name__ == "__main__":
     print("[LegalIQ] Multi-AI Server (OpenAI + Gemini) running on http://127.0.0.1:5000")
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)), debug=False)
